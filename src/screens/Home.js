@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Cards from "../components/Cards";
 
 export default function Header() {
   return (
@@ -8,7 +9,9 @@ export default function Header() {
       <div>
         <Navbar />
       </div>
-      <div>Body</div>
+      <div>
+        <Cards />
+      </div>
       <div>
         <Footer />
       </div>

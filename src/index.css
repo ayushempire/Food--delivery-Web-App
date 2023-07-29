@@ -5,7 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* font-family: "NHaasGroteskDSPro" !important; */
+  /* font-family: "NHaasGroteskDSPro"; */
+  /* font-family: "Bebas Neue", sans-serif; */
 }
 
 code {
