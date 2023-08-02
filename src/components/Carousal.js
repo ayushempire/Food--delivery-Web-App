@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Carousal() {
   let img_fit = {
-    objectFit: "fill !important",
+    objectFit: "contain !important",
   };
 
   return (
