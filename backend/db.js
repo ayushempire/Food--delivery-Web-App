@@ -1,48 +1,45 @@
 const mongoose = require("mongoose");
 
-// const mongodbURI =
-//   "mongodb+srv://my_food:Myfood123@myfood.ldmgn55.mongodb.net/";
+/*
+todo: funcion to connect mongodb and fexthing data
+*/
 
-// const mongoDB = () => {
-//   mongoose.connect(mongodbURI, () => {
-//     console.log("connected");
-//   });
-// };
+// url variable
+var mongodbURI =
+  "mongodb+srv://my_food:Myfood123@myfood.ldmgn55.mongodb.net/sample?retryWrites=true&w=majority";
 
-// module.exports = mongoDB;
-
-// import MongoStore from "./connect-mongo";
-
-// * funcion to connect mongodb to vs code
-
-const mongoDB = () => {
-  mongoose
-    .connect(
-      "mongodb+srv://my_food:Myfood123@myfood.ldmgn55.mongodb.net/MyFoodretryWrites=true&w=majority",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    )
+// fucntion to feech data from mongodb
+const mongoDB = async () => {
+  await mongoose
+    .connect(mongodbURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
 
     .then(() => {
       console.log("Connected Successfully");
-      const fetched_data = mongoose.connection.db.collection("food_items");
-      fetched_data.find({}).toArray(function (err, data) {
-        if (err) console.log(err);
-        else {
-          console.log("fetched successfully");
-          console.log(data);
-        }
-      });
-    })
 
+      // connecting with database collection
+      const fetched_data = mongoose.connection.db.collection("food_items");
+
+      // actual fecthing function
+      fetched_data
+        .find({})
+        .toArray()
+        .then((data) => {
+          console.log("data fetched");
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })
     .catch((err) => {
       console.error(err);
     });
 };
 
-/* exporting funtion */
+/* exporting funtion to /backend/index.js*/
 module.exports = mongoDB;
 
-// * end of funcion to connect mongodb to vs code
+// * end of funcion to connect mongodb and fexthing data
