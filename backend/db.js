@@ -28,7 +28,7 @@ const mongoDB = async () => {
         .toArray()
         .then((data) => {
           console.log("data fetched");
-          console.log(data);
+          // console.log(data);
         })
         .catch((err) => {
           console.log(err);
