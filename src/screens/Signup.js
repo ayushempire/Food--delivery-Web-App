@@ -36,7 +36,7 @@ export default function Signup() {
 
   return (
     <>
-      <div className="container">
+      <div className="container pt-5">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Name</label>
