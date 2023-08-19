@@ -15,8 +15,8 @@ export default function Carousal() {
           style={img_fit}
         >
           <div className="carousel-inner " id="carousel">
-            <div class="carousel-caption" style={{ zIndex: "10" }}>
-              <form class="d-flex">
+            <div className="carousel-caption" style={{ zIndex: "10" }}>
+              <form className="d-flex">
                 <input
                   className="form-control me-2"
                   type="search"
@@ -24,7 +24,7 @@ export default function Carousal() {
                   aria-label="Search"
                 />
                 <button
-                  class="btn btn-outline-success text-white bg-success"
+                  className="btn btn-outline-success text-white bg-success"
                   type="submit"
                 >
                   Search
