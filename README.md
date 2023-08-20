@@ -68,3 +68,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+apis or third party services used :
+
+1. express-validation :
+   (npm install express-validation)
+   used for validate the sign up conditions
+   like password must have 5 or more characters
+   email validation
+   etc
+
+2. bcrypt :
+   (npm install bcryptjs)
+   used for hashing the user password
+
+3. JSON Web token :
+   (npm install jsonwebtoken)
+   used to logged in user until he clears the cache

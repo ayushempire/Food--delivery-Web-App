@@ -35,7 +35,8 @@ export default function Signup() {
       alert("Enter valid Credentials");
     }
     if (json.success) {
-      alert("please login again");
+      alert(`Sign up successfull
+please login again`);
       navigate("/Login");
     }
   };

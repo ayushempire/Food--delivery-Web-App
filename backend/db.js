@@ -27,8 +27,19 @@ const mongoDB = async () => {
         .find({})
         .toArray()
         .then((data) => {
+          const fetched_data1 =
+            mongoose.connection.db.collection("food_categories");
+          fetched_data1
+            .find({})
+            .toArray()
+            .then((cat_data) => {
+              // creating global variale so we can use all over the app
+              global.food_items = data;
+              global.food_categories = cat_data;
+              // console.log(global.food_items);
+              // console.log(global.food_categories);
+            });
           console.log("data fetched");
-          // console.log(data);
         })
         .catch((err) => {
           console.log(err);

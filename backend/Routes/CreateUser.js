@@ -4,6 +4,10 @@ const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 //using bcrypt js fot hashing
 const bcrypt = require("bcryptjs");
+// using jsonwebtoken
+const jwt = require("jsonwebtoken");
+// creating secret key
+const secretKey = "PratipChandraLekhevVardishnuVand";
 
 router.post(
   "/createuser",
@@ -69,7 +73,15 @@ router.post(
       if (!validpassword) {
         return res.status(400).json({ errors: "enter valid password" });
       } else {
-        res.json({ success: true });
+        // using jwt to logged in the user
+        const data = {
+          user: {
+            id: userdata.id,
+          },
+        };
+
+        const authToken = jwt.sign(data, secretKey); // jwt sign in user until it clear cache
+        res.json({ success: true, authToken: authToken });
       }
     } catch (error) {
       console.log(error);
