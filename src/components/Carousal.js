@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Carousal() {
   let img_fit = {
-    objectFit: "contain !important",
+    objectFit: "cover",
   };
 
   return (
@@ -37,7 +37,7 @@ export default function Carousal() {
                 src="https://source.unsplash.com/random/300×300/?burger"
                 className="d-block w-100"
                 alt="..."
-                style={{ filter: "brightness(50%)" }}
+                style={({ filter: "brightness(50%)" }, { img_fit })}
               />
             </div>
             <div className="carousel-item">
@@ -45,7 +45,7 @@ export default function Carousal() {
                 src="https://source.unsplash.com/random/300×300/?pizza"
                 className="d-block w-100"
                 alt="..."
-                style={{ filter: "brightness(50%)" }}
+                style={({ filter: "brightness(50%)" }, { img_fit })}
               />
             </div>
             <div className="carousel-item">
@@ -53,7 +53,7 @@ export default function Carousal() {
                 src="https://source.unsplash.com/random/300×300/?pastry"
                 className="d-block w-100"
                 alt="..."
-                style={{ filter: "brightness(50%)" }}
+                style={({ filter: "brightness(50%)" }, { img_fit })}
               />
             </div>
           </div>

@@ -34,17 +34,24 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link
+                  className="nav-link active text-white fw-bold"
+                  aria-current="page"
+                  to="/"
+                >
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Login">
+                <Link
+                  className="nav-link text-white font-weight-light fw-bold"
+                  to="/Login"
+                >
                   Login
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Signup">
+                <Link className="nav-link text-white fw-bold" to="/Signup">
                   Signup
                 </Link>
               </li>

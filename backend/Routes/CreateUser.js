@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
+//using bcrypt js fot hashing
+const bcrypt = require("bcryptjs");
 
 router.post(
   "/createuser",
@@ -17,11 +19,16 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+    // genrating salt value for hashing
+    let salt = await bcrypt.genSalt(10);
+
+    // getinng salt and generating hash for password
+    let bcryptPassword = await bcrypt.hash(req.body.password, salt);
 
     try {
       await User.create({
         name: req.body.name,
-        password: req.body.password,
+        password: bcryptPassword,
         email: req.body.email,
         location: req.body.location,
       });
@@ -54,7 +61,12 @@ router.post(
         return res.status(400).json({ errors: "enter correct email " });
       }
 
-      if (req.body.password !== userdata.password) {
+      // bcrypt password validation
+      const validpassword = await bcrypt.compare(
+        req.body.password,
+        userdata.password
+      );
+      if (!validpassword) {
         return res.status(400).json({ errors: "enter valid password" });
       } else {
         res.json({ success: true });
