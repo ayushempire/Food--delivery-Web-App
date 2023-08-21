@@ -134,7 +134,7 @@ export default function Header() {
                         return (
                           <div
                             key={filterItems._id}
-                            className="col-12 col-md-6 col-lg-3"
+                            className="m-3 col-12 col-md-6 col-lg-3"
                           >
                             <Cards
                               foodName={filterItems.name}
