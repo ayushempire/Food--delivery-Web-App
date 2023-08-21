@@ -1,6 +1,9 @@
 import React from "react";
 
-export default function () {
+export default function Cards(props) {
+  let options = props.options;
+  let priceOption = Object.keys(options);
+
   return (
     <div>
       <div>
@@ -14,7 +17,7 @@ export default function () {
             alt="..."
           />
           <div className="card-body">
-            <h5 className="card-title">Card title</h5>
+            <h5 className="card-title">{props.foodName}</h5>
             <p className="card-text">this is card text</p>
             {/* 
         Creating quantity dropdown 
@@ -35,9 +38,13 @@ export default function () {
 
               {/* Creating size of food dropdown */}
               <select className=" h-100 m-2 bg-success rounded">
-                (<option value="small">Small</option>), (
-                <option value="half">Half</option>), (
-                <option value="full">Full</option>)
+                {priceOption.map((data) => {
+                  return (
+                    <option key={data} value={data}>
+                      {data}
+                    </option>
+                  );
+                })}
               </select>
               {/* 
          end os Creating size of food dropdown 

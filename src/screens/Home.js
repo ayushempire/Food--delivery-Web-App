@@ -53,7 +53,11 @@ export default function Header() {
                             key={filterItems._id}
                             className="col-12 col-md-6 col-lg-3"
                           >
-                            <Cards></Cards>
+                            <Cards
+                              foodName={filterItems.name}
+                              options={filterItems.options[0]}
+                              imgSrc={filterItems.img}
+                            ></Cards>
                           </div>
                         );
                       })
@@ -64,7 +68,6 @@ export default function Header() {
               );
             })
           : ""}
-        <Cards />
       </div>
       <div>
         <Footer />
