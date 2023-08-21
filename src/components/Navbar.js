@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 
 export default function Navbar() {
@@ -8,6 +8,13 @@ export default function Navbar() {
     fontFamily: "Bebas Neue, sans-serif",
   };
   // end of Css Nav brand
+
+  // logout function
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    navigate("/");
+  };
 
   return (
     <div>
@@ -32,30 +39,64 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav me-auto">
               <li className="nav-item">
                 <Link
-                  className="nav-link active text-white fw-bold"
+                  className="nav-link active text-white fs-5 fw-bold active"
                   aria-current="page"
                   to="/"
                 >
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link
-                  className="nav-link text-white font-weight-light fw-bold"
-                  to="/Login"
-                >
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white fw-bold" to="/Signup">
-                  Signup
-                </Link>
-              </li>
+              {/* logic for my order link to display after sign in */}
+              {localStorage.getItem("authToken") ? (
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active text-white fs-5 fw-bold active"
+                    aria-current="page"
+                    to="/"
+                  >
+                    MyOerders
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
             </ul>
+            <div className="d-flex">
+              {/* lcogic for display cart button and loguot button */}
+              {!localStorage.getItem("authToken") ? (
+                <>
+                  <Link
+                    className="btn text-success bg-white mx-1 fw-bold"
+                    to="/Login"
+                  >
+                    Login
+                  </Link>
+
+                  <Link
+                    className="btn text-success bg-white fw-bold mx-1"
+                    to="/Signup"
+                  >
+                    Signup
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <div className="btn text-success bg-white mx-1 fw-bold">
+                    My Cart
+                  </div>
+
+                  <div
+                    className="btn text-danger bg-white fw-bold mx-1"
+                    onClick={logout}
+                  >
+                    Logout
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </nav>
