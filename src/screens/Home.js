@@ -137,9 +137,10 @@ export default function Header() {
                             className="m-3 col-12 col-md-6 col-lg-3"
                           >
                             <Cards
-                              foodName={filterItems.name}
+                              // foodName={filterItems.name}
+                              foodItem={filterItems}
                               options={filterItems.options[0]}
-                              imgSrc={filterItems.img}
+                              // imgSrc={filterItems.img}
                             ></Cards>
                           </div>
                         );
