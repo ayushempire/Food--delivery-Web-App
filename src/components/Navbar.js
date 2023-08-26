@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
+
 // iporting bootstrap badge
 import { Badge } from "react-bootstrap";
 
@@ -88,6 +89,9 @@ export default function Navbar() {
                 <>
                   <div className="btn text-success bg-white mx-1 fw-bold">
                     My Cart
+                    <Badge pill className="ms-2">
+                      2
+                    </Badge>
                   </div>
 
                   <div
