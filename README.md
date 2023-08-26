@@ -85,3 +85,5 @@ apis or third party services used :
 3. JSON Web token :
    (npm install jsonwebtoken)
    used to logged in user until he clears the cache
+
+4. install on frontend React bootstap
