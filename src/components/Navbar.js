@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
+// iporting bootstrap badge
+import { Badge } from "react-bootstrap";
 
 export default function Navbar() {
   //  Css for Nav brand
