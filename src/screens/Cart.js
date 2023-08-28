@@ -1,5 +1,6 @@
 import React from "react";
-// import Delete from "@material-ui/icons/Delete";
+import Delete from "../delete.svg";
+
 import { useCart, useDispatchCart } from "../components/ContextReducer";
 export default function Cart() {
   let data = useCart();
@@ -69,15 +70,19 @@ export default function Cart() {
                     onClick={() => {
                       dispatch({ type: "REMOVE", index: index });
                     }}
-                  ></button>{" "}
+                  >
+                    <img src={Delete} alt="Delete"></img>
+                  </button>{" "}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {/* <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div> */}
         <div>
-          <button className="btn bg-success mt-5 "> Check Out </button>
+          <h1 className="fs-2">Total Price: {totalPrice}/-</h1>
+        </div>
+        <div>
+          <button className="btn bg-success mt-5">Check Out </button>
         </div>
       </div>
     </div>
