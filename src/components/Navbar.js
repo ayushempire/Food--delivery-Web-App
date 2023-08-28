@@ -1,11 +1,19 @@
-import React from "react";
+import { React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../components/ContextReducer";
 import "./navbar.css";
+import Cart from "../screens/Cart";
+import Model from "../Model";
 
 // iporting bootstrap badge
 import { Badge } from "react-bootstrap";
 
 export default function Navbar() {
+  let data = useCart();
+  const navigate = useNavigate();
+
+  const [cartView, setCartView] = useState(false);
+
   //  Css for Nav brand
   var Nav_heading = {
     fontFamily: "Bebas Neue, sans-serif",
@@ -13,12 +21,11 @@ export default function Navbar() {
   // end of Css Nav brand
 
   // logout function
-  const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("authToken");
     navigate("/");
   };
-
+  // end of logout function
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-success">
@@ -87,13 +94,22 @@ export default function Navbar() {
                 </>
               ) : (
                 <>
-                  <div className="btn text-success bg-white mx-1 fw-bold">
+                  <div
+                    className="btn text-success bg-white mx-1 fw-bold"
+                    onClick={() => {
+                      setCartView(true);
+                    }}
+                  >
                     My Cart
                     <Badge pill className="ms-2">
-                      2
+                      {data.length === 0 ? "" : data.length}
                     </Badge>
                   </div>
-
+                  {cartView ? (
+                    <Model onClose={() => setCartView(false)}>
+                      <Cart></Cart>
+                    </Model>
+                  ) : null}
                   <div
                     className="btn text-danger bg-white fw-bold mx-1"
                     onClick={logout}
